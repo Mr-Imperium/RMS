@@ -1,0 +1,56 @@
+/*
+ * This file contains styles that are ONLY applied when the user prints a page.
+ */
+@media print {
+    /* Hide all non-essential UI elements */
+    .no-print, 
+    #root > div > div > header, /* MUI Header */
+    #root > div > div > nav,    /* MUI Sidebar */
+    button, 
+    [role="button"],
+    .MuiIconButton-root,
+    .MuiTabs-root {
+        display: none !important;
+    }
+
+    /* Ensure the main content area takes up the full page */
+    body, #root, .print-container {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #fff !important; /* Ensure white background */
+        -webkit-print-color-adjust: exact; /* Chrome, Safari */
+        color-adjust: exact; /* Firefox */
+    }
+
+    .MuiPaper-root {
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    /* Optimize page layout for printing */
+    @page {
+        size: A4;
+        margin: 1.5cm; /* Standard margins for a document */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid; /* Prevent page breaks right after a heading */
+    }
+
+    p, ul, ol {
+        page-break-inside: avoid; /* Try to keep paragraphs and lists on the same page */
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    /* Show the URL for links when printed */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #555;
+    }
+}
