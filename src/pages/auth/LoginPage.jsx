@@ -15,7 +15,7 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
-  const dispatch = useAppAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const authStatus = useAppSelector(selectAuthStatus);

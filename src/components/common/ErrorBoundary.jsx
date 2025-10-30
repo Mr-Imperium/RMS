@@ -14,11 +14,14 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log the critical error to our system_log table
-    logSystemEvent('ERROR', 'Uncaught React render error', {
-      message: error.toString(),
-      componentStack: errorInfo.componentStack,
-    });
+    try {
+      logSystemEvent('ERROR', 'Uncaught React render error', {
+        message: error.toString(),
+        componentStack: errorInfo.componentStack,
+      });
+    } catch (logError) {
+      console.error('Failed to log error to audit service:', logError);
+    }
   }
 
   render() {
