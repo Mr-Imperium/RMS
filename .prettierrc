@@ -1,0 +1,21 @@
+ 
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}```
+
+---
+
+### 3. Instructions for Manual Setup
+
+Now, follow these steps exactly in your terminal.
+
+**1. Create the Project and Navigate Into It:**
+
+First, create the main project folder and all the nested directories. You can do this manually or by running these commands in your terminal:
+
+```bash
+mkdir -p recruitment-management-system/public recruitment-management-system/src/{api,app,assets/images,assets/styles,components/{common,layout},features/{auth,dashboard},hooks,pages,routes,services,utils}
+cd recruitment-management-system
