@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import PublicRoute from './PublicRoute';
 import { PERMISSIONS } from '../utils/permissions';
-import UnauthorizedPage from '../pages/UnauthorizedPage';
+import UnauthorizedPage from '../pages/errors/UnauthorizedPage';
 import DashboardLayout from '../components/layout/DashboardLayout';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 
@@ -20,7 +20,7 @@ const LoginPage = lazy(() => import('../pages/auth/LoginPage'));
 const ForgotPasswordPage = lazy(() => import('../pages/auth/ForgotPasswordPage'));
 const ResetPasswordPage = lazy(() => import('../pages/auth/ResetPasswordPage'));
 // Protected (Admin/Operation/Management/Reports/Settings)
-const DashboardPage = lazy(() => import('../pages/DashboardPage'));
+const DashboardPage = lazy(() => import('../pages/dashboard/DashboardPage'));
 const CompaniesListPage = lazy(() => import('../pages/admin/companies/CompaniesListPage'));
 const CompanyFormPage = lazy(() => import('../pages/admin/companies/CompanyFormPage'));
 const JobTitlesListPage = lazy(() => import('../pages/admin/jobs/JobTitlesListPage'));
@@ -43,7 +43,7 @@ const VisitorsPage = lazy(() => import('../pages/admin/management/VisitorsPage')
 const InquiriesPage = lazy(() => import('../pages/admin/management/InquiriesPage'));
 const LabourApprovalReportPage = lazy(() => import('../pages/admin/reports/LabourApprovalReportPage'));
 const NotificationsPage = lazy(() => import('../pages/admin/notifications/NotificationsPage')); // Added from older code
-const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const NotFoundPage = lazy(() => import('../pages/errors/NotFoundPage'));
 const GeneralSettingsPage = lazy(() => import('../pages/admin/settings/GeneralSettingsPage'));
 const SecuritySettingsPage = lazy(() => import('../pages/admin/settings/SecuritySettingsPage'));
 const EmailTemplatesPage = lazy(() => import('../pages/admin/settings/EmailTemplatesPage')); // Added import
@@ -58,7 +58,7 @@ const AppRouter = () => {
         {/* These routes render without the main DashboardLayout */}
         <Route path="/print/candidate/:id" element={<ProtectedRoute><CandidateProfilePrint /></ProtectedRoute>} />
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
-                <Route path="*" element={<NotFoundPage />} />
+
         {/* ====================================================================
             PUBLIC & AUTH ROUTES
         ==================================================================== */}
